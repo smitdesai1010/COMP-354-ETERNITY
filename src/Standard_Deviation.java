@@ -29,7 +29,6 @@ public class Standard_Deviation {
     }
 
     
-    //Calculate mean of double list, can make public for reuse later
     private static double mean(double[] list) 
     {
         double average = 0;
@@ -41,12 +40,40 @@ public class Standard_Deviation {
         return average;
     }
     
-    
+
+	   
+    private static double decimalSqrt(double value, double i, double j)   
+    {  
+	    double midValue = (i+j)/2;  
+	    double currSquare = square(midValue);  
+	    
+	    double absValue = currSquare-value < 0 ? value-currSquare : currSquare-value;
+	    
+	    if( currSquare == value || absValue < 0.0000001 )   
+	    	return midValue;   
+	    
+	    else if(currSquare > value)  
+	    	return decimalSqrt(value, i, midValue);  
+	    
+	    else  
+	    	return decimalSqrt(value, midValue, j);  
+    }  
+   
     
     private static double sqrt(double value)
     {
+    	int i = 1;  
     	
-    	return value;
+ 	    while(true)   
+ 	    {  
+ 		    if(i*i == value)  
+ 		    	return i;  
+ 		    
+ 		    else if(i*i > value)   
+ 		    	return decimalSqrt(value,i-1,i);  
+ 		    
+ 		    i++;  
+ 	    }  
     }
     
     
