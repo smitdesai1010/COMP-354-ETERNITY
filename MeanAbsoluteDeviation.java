@@ -37,10 +37,13 @@ public class MeanAbsoluteDeviation {
             return 0;
 
         double sum = 0;
-        for (double n : list) {
-            sum += n;
+        int n = list.length;
+
+        //Do division by length as part of the summation to avoid double overflow
+        for (double i : list) {
+            sum += i/n;
         }
-        return sum / list.length;
+        return sum;
     }
 
 }
