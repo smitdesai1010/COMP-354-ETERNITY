@@ -11,28 +11,45 @@ public class Standard_Deviation {
     // Standard Deviation
     public static double StandardDeviation(double[] dataSet) 
     {
-        if (dataSet.length == 0) 
-        {
-            System.out.println("\nEmpty dataSet provided to Standard deviation function\n");
-            return 0.0;
-        }
-
-        double dataMean = mean(dataSet);	//calculating mean
-        double sumOfdistancesFromMean = 0; 
-
-        for (double value : dataSet)
-        	sumOfdistancesFromMean += square(value-dataMean) ;
-
-        double variance = sumOfdistancesFromMean/dataSet.length;
+        try
+        {      
+	        if (dataSet.length == 0) 
+	        	throw new IllegalArgumentException("Input length is zero");
+	
+	        double dataMean = mean(dataSet);	//calculating mean
+	        double sumOfdistancesFromMean = 0; 
+	
+	        for (double value : dataSet)
+	        	sumOfdistancesFromMean += square(value-dataMean) ;
+	
+	        double variance = sumOfdistancesFromMean/dataSet.length;
+	        
+	        return sqrt(variance);
+		        
+    	}
         
-        return sqrt(variance);
+        catch (IllegalArgumentException e)
+        {
+        	System.out.println(e);
+        }
+        
+        
+        catch (Exception e)
+        {
+        	System.out.println("General Exception: "+e);
+        }
+        
+        return 0.0;
     }
 
     
-    private static double mean(double[] list) 
+    private static double mean(double[] list) throws IllegalArgumentException
     {
         double average = 0;
         int length = list.length;
+        
+        if (list.length == 0)
+        	throw new IllegalArgumentException("Input size is zero");
         
         for (double value : list) 
             average += value/length;		//to prevent overflow while adding
@@ -60,9 +77,15 @@ public class Standard_Deviation {
     }  
    
     
-    private static double sqrt(double value)
+    private static double sqrt(double value) throws ArithmeticException
     {
-    	int i = 1;  
+    	if (value == 0)
+    		return 0;
+    	
+    	if (value < 0)
+    		throw new ArithmeticException("Sqrt cannot be calculated for negative values");
+    	
+    	double i = 1;  
     	
  	    while(true)   
  	    {  
@@ -79,7 +102,7 @@ public class Standard_Deviation {
     
     
     private static double square(double value)
-    {
+    {    	
     	return value*value;
     }
     
