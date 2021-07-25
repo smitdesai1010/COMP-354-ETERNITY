@@ -1,15 +1,8 @@
 
 public class Standard_Deviation {
 
-	public static void main(String[] args) {
-        // For Testing, this is how method is used
-		// need to setup a parser
-        double[] data = { 1.0, 2.0, 3.0 };
-        System.out.println(StandardDeviation(data));
-    }
-
     // Standard Deviation
-    public static double StandardDeviation(double[] dataSet) 
+    public static void StandardDeviation(double[] dataSet) 
     {
         try
         {      
@@ -24,7 +17,7 @@ public class Standard_Deviation {
 	
 	        double variance = sumOfdistancesFromMean/dataSet.length;
 	        
-	        return sqrt(variance);
+	        System.out.println("Standard Deviation is: "+sqrt(variance));
 		        
     	}
         
@@ -36,10 +29,8 @@ public class Standard_Deviation {
         
         catch (Exception e)
         {
-        	System.out.println("General Exception: "+e);
-        }
-        
-        return 0.0;
+        	System.out.println("Exception in Standard deviation: "+e);
+        }        
     }
 
     
