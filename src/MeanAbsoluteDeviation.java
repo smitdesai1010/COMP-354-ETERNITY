@@ -1,3 +1,4 @@
+package src;
 //We can change the naming conventions later
 public class MeanAbsoluteDeviation {
 
@@ -27,7 +28,9 @@ public class MeanAbsoluteDeviation {
         }
 
         // return average of all the distances
-        return mean(distancesFromMean);
+        double result = mean(distancesFromMean);
+        System.out.println(result);
+        return result;
     }
 
     //Calculate mean of double list, can make public for reuse later

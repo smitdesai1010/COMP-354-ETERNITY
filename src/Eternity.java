@@ -1,3 +1,5 @@
+package src;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -114,8 +116,8 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);
+				MeanAbsoluteDeviation.MAD(input);
 								
-				//call MAD function
 				break;
 			}
 			
