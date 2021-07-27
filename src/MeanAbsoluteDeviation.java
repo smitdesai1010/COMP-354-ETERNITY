@@ -2,12 +2,6 @@ package src;
 //We can change the naming conventions later
 public class MeanAbsoluteDeviation {
 
-    public static void main(String[] args) {
-        // For Testing, this is how method is used
-        double[] data = { 1.0, 2.0, 3.0 };
-        System.out.println(MAD(data));
-    }
-
     // Mean Abosulute Deviation
     public static double MAD(double[] dataSet) {
         // input validation
