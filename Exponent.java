@@ -1,92 +1,89 @@
 import java.util.Scanner;
-import java.math.BigDecimal;
 
 public class Exponent {
 
-    public static double calculate(double base, int exponent[]){
-        //in case that exponent = 0, final result is 1
-        double finalResult = 1;
+    static public double myPow(double x, int n) {
 
-        if(exponent[0] > 0){
-            finalResult = power(base, exponent[0]);
-            finalResult = findNthRoot(finalResult, exponent[1]);
+        int ret = n;
+        if(n==0) {
+            return 1;
         }
-        //fix a small bug when both base and exponent are negative
-        else if (base < 0 && exponent[0] < 0){
-            exponent[0] = -exponent[0];
-            finalResult = power(base, exponent[0]);
-            finalResult = findNthRoot(finalResult, exponent[1]);
-            finalResult = -1/finalResult;
-
+        if(n<0) {
+            ret=(int)myAbs(n); //if n=-1, then make it n=1 and return reciprocal of result
+            double result= myPow(x, ret-1)*x;
+            return (1/result);
         }
-        //if the base is negative, make the base positive, and use 1 divide the result at the end
-        else if (exponent[0] < 0){
-            exponent[0] = -exponent[0];
-            finalResult = power(base, exponent[0]);
-            finalResult = findNthRoot(finalResult, exponent[1]);
-            finalResult = 1/finalResult;
+        double k= myPow(x, ret/2);
+        double powNumber=k*k;
+        if(ret%2==1) { //if n is odd
+            powNumber=powNumber *x;
         }
-
-        return finalResult;
+        return powNumber;
     }
 
-    //Reference: https://blog.csdn.net/u014039577/article/details/79281046
-    //solving the problem of double calculation
-    public static double multiply(Double... doubles){
-        BigDecimal result = new BigDecimal(1);
-        for(Double a : doubles){
-            result = result.multiply(new BigDecimal(String.valueOf(a)));
+    static double EPS = 0.0000000000001;
+
+    public static double mySqrt(double x) {
+
+        double n = 1;
+        double cnt=1;
+        while(true) {
+            if(cnt == 200) {
+                return  n;
+            }
+            n = n - (( (n*n)- x) /  (2*n));
+            cnt+=1;
         }
-        return result.doubleValue();
+
     }
 
-    public static double power(double base, double exponent){
-        double finalResult = 1.0;
-        for (int i = 0; i < exponent; i++) {
-            finalResult *= base;
+    public static double myAbs(double x){
+        double ret = x;
+        if (ret < 0){
+            ret = -ret;
         }
-        return finalResult;
+        return ret;
     }
 
-    //reference: https://www.geeksforgeeks.org/n-th-root-number/
-    //rename pow method
-    static double findNthRoot(double A, int N) {
-
-        // initially guessing a random number between 0 and 9
-        double xPre = Math.random() % 10;
-
-        // smaller eps, denotes more accuracy
-        double eps = 0.001;
-
-        // initializing difference between two roots by INT_MAX
-        double delX = 2147483647;
-
-        // xK denotes current value of x
-        double xK = 0.0;
-
-        // loop untill we reach desired accuracy
-        while (delX > eps) {
-            // calculating current value from previous value by newton's method
-            xK = ((N - 1.0) * xPre + A / power(xPre, N - 1)) / (double) N;
-            delX = Math.abs(xK - xPre);
-            xPre = xK;
+    public static double exponentiation(double base, double exp){
+        if (exp % 1 == 0 ){
+            return myPow(base, (int)exp);
         }
 
-        return xK;
-    }
-
-    public static int[] transfer(double y){
-        int[] exponent = new int[2];
-        int temp = 1;
-
-        while (y % 1 != 0){
-            y = multiply(y, 10.0);
-            temp *= 10;
+        if(exp == 0)
+            return 1;
+        else if (exp < 0){
+            return 1 / exponentiation(base, -exp);
         }
-        exponent[0] = (int)y;
-        exponent[1] = temp;
 
-        return exponent;
+        else if(exp >= 1){
+            double temp = exponentiation(base, exp / 2);
+            return temp * temp;
+        }
+        else{
+            double low = 0;
+            double high = 1.0;
+
+            double sqr = mySqrt(base);
+            double acc = sqr;
+            double mid = high / 2;
+
+            while(myAbs(mid - exp) > EPS){
+                sqr = mySqrt(sqr);
+
+                if (mid <= exp) {
+                    low = mid;
+                    acc *= sqr;
+                } else{
+                    high = mid;
+                    acc *= (1/sqr);
+                }
+
+                mid = (low + high) / 2;
+            }
+
+            return acc;
+        }
     }
 
     public static void main(String[] args){
@@ -108,8 +105,7 @@ public class Exponent {
 
         scanner.close();
 
-        int[] exponent = transfer(input[1]);
-        double result = calculate(input[0], exponent);
+        double result = exponentiation(input[0],input[1]);
 
         System.out.println("The result is: "+ result);
     }
