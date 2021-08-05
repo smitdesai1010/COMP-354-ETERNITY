@@ -75,6 +75,8 @@ public class Eternity {
 				double x = keyboard.nextDouble();
 				
 				//call arcos function(x)
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -92,6 +94,8 @@ public class Eternity {
 				double x = keyboard.nextDouble();
 				
 				//call abx function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -129,7 +133,9 @@ public class Eternity {
 				Logarithm.logarithm(base, x);
 				
 				System.out.println();
-				
+
+				System.out.println("");
+				System.out.println("");
 				break;	
 			}
 			
@@ -141,6 +147,8 @@ public class Eternity {
 				double x = keyboard.nextDouble();
 				
 				//call gamma function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -154,7 +162,9 @@ public class Eternity {
 				
 				double[] input = parseCSV(str);
 				MeanAbsoluteDeviation.MAD(input);
-								
+
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -168,7 +178,9 @@ public class Eternity {
 				
 				double[] input = parseCSV(str);				
 				Standard_Deviation.StandardDeviation(input);
-								
+
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -181,8 +193,12 @@ public class Eternity {
 				
 				System.out.print("\nEnter y (Double value): ");
 				double y = keyboard.nextDouble();
+
+				Exponent.calculateExp(x,y);
 				
 				//call x^y function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
