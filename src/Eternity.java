@@ -73,8 +73,8 @@ public class Eternity {
 				System.out.println("arcos(x) \n");
 				System.out.print("Enter x (Double value): ");
 				double x = keyboard.nextDouble();
-				
-				//call arcos function(x)
+			//this next function call computes the acos and returns degrees. for output, if you want radians add arcCos.degtoRad(arcCos.acos(x)) or call degtoRad on a saved value. 
+				arcCos.acos(x); 
 				System.out.println("");
 				System.out.println("");
 				break;
