@@ -7,10 +7,10 @@ public class arcCos{
 
 
 //simple function to convert radians to degrees 
-    public static double radToDeg(double rad){
-    double retDeg = rad*180/pi;
+    public static double degtoRad(double deg){
+    double retRad = deg*pi/180;
         
-        return retDeg;
+        return retRad;
     }
 
 
