@@ -73,8 +73,8 @@ public class Eternity {
 				System.out.println("arcos(x) \n");
 				System.out.print("Enter x (Double value): ");
 				double x = keyboard.nextDouble();
-			//this next function call computes the acos and returns degrees. for output, if you want radians add arcCos.degtoRad(arcCos.acos(x)) or call degtoRad on a saved value. 
-				arcCos.acos(x); 
+				
+				//call arcos function(x)
 				System.out.println("");
 				System.out.println("");
 				break;
@@ -135,6 +135,7 @@ public class Eternity {
 				System.out.println();
 
 				System.out.println("");
+				
 				System.out.println("");
 				break;	
 			}
@@ -143,8 +144,14 @@ public class Eternity {
 			case 4 : {
 				System.out.println("Gamma function \n");
 
-				System.out.print("Enter x (Double value): ");
+				System.out.print("Enter alpha (Double value): ");
 				double x = keyboard.nextDouble();
+				gammaFunction value=new gammaFunction(x);
+				gammaFunction.distribution(value);
+				if(value.plus==0&&value.clas==1) 
+					//if the user input negative integers, the system will generate following words instead of doing the calculation
+					throw new CustomException("negetive integers are undefined in gamma function!");
+				gammaFunction.gammaAlpha(value);
 				
 				//call gamma function
 				System.out.println("");
