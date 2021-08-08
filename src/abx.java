@@ -75,14 +75,8 @@ public class abx{
 
 	public static void calculatePower(double a, double b, double x) {
 		double answer;
-		if (b < 0 && x % 1 != 0) {
-			System.out.println("Input are invalid, program terminated!");
-			System.exit(0);
-		}
-		else {
-			answer = power(a, b, x);
-			System.out.println("The resut is: " + answer);
-		}
+		answer = power(a, b, x);
+		System.out.println("The resut is: " + answer);
 	}
 
 }
