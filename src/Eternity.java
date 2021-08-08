@@ -1,3 +1,5 @@
+package src;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,7 +10,9 @@ public class Eternity {
 	public static void main(String[] args) {
 
 		try
-		{				
+		{		
+			while(true)
+			{
 				System.out.println("Welcome to the Eternity");
 				System.out.println("Team-D");
 				
@@ -21,12 +25,20 @@ public class Eternity {
 				System.out.println("5) Mean Absolute Deviation ");
 				System.out.println("6) Standard Deviation ");
 				System.out.println("7) x^y ");
-		
+				System.out.println("8) Exit ");
+				
 				System.out.print("\n\nEnter your choice: ");
 				int choice = keyboard.nextInt();
 				System.out.println("\n\n\n");
 		
 				performFunction(choice);
+			}
+				
+		}
+		catch(CustomException e)
+		{
+			System.out.print(e.getMessage());
+
 		}
 		
 		catch (InputMismatchException e)
@@ -52,7 +64,7 @@ public class Eternity {
 	}
 	
 	
-	public static void performFunction(int index)
+	public static void performFunction(int index) throws CustomException
 	{
 		
 		switch(index) 
@@ -63,6 +75,8 @@ public class Eternity {
 				double x = keyboard.nextDouble();
 				
 				//call arcos function(x)
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -80,28 +94,68 @@ public class Eternity {
 				double x = keyboard.nextDouble();
 				
 				//call abx function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
 			
 			case 3 : {
-				System.out.println("log(x) \n");
+				double x;
+				double base;
+								
+				do
+				{
+					System.out.println("log(x) \n");
 
-				System.out.print("Enter x (Double value): ");
-				double x = keyboard.nextDouble();
+					// Input (x)
+					System.out.print("Enter x (Double value): ");
+					x = keyboard.nextDouble();
+						
+					System.out.println();
+					
+					//Input base
+					System.out.print("Enter base (Double value): ");
+					base = keyboard.nextDouble();
+					
+					System.out.println();
+					
+					// Throw exception if x < 0, base < 0 and base = 1
+					if(base <= 1 || x < 0)
+					{
+						throw new CustomException("Illegal argument! Remember: (x) > 0 , base > 0 and base != 1");
+					}
+						
+				}while(base <= 1 || x < 0);
+				
 				
 				//call logx function
-				break;
+				Logarithm.logarithm(base, x);
+				
+				System.out.println();
+
+				System.out.println("");
+				
+				System.out.println("");
+				break;	
 			}
 			
 			
 			case 4 : {
 				System.out.println("Gamma function \n");
 
-				System.out.print("Enter x (Double value): ");
+				System.out.print("Enter alpha (Double value): ");
 				double x = keyboard.nextDouble();
+				gammaFunction value=new gammaFunction(x);
+				gammaFunction.distribution(value);
+				if(value.plus==0&&value.clas==1) 
+					//if the user input negative integers, the system will generate following words instead of doing the calculation
+					throw new CustomException("negetive integers are undefined in gamma function!");
+				gammaFunction.gammaAlpha(value);
 				
 				//call gamma function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -114,8 +168,10 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);
-								
-				//call MAD function
+				MeanAbsoluteDeviation.MAD(input);
+
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -128,10 +184,10 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);				
-				double res = Standard_Deviation.StandardDeviation(input);
-				
-				System.out.println("Standard Deviation is: "+res);
-				
+				Standard_Deviation.StandardDeviation(input);
+
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
 			
@@ -144,12 +200,22 @@ public class Eternity {
 				
 				System.out.print("\nEnter y (Double value): ");
 				double y = keyboard.nextDouble();
+
+				Exponent.calculateExp(x,y);
 				
 				//call x^y function
+				System.out.println("");
+				System.out.println("");
 				break;
 			}
-				
+			
+			case 8 : {				
+				System.out.println("Exiting program.");
+
+				System.exit(0);
+			}
 		
+						
 			default : {
 				System.out.println("Invalid choice");
 				break;
@@ -311,3 +377,4 @@ public class Eternity {
     }
 
 }
+
