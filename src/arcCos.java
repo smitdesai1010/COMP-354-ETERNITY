@@ -1,3 +1,6 @@
+package src;
+
+
 public class arcCos{
 
     static double pi =  3.14159265358979;
