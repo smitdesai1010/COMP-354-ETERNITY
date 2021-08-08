@@ -83,17 +83,23 @@ public class Eternity {
 			
 			case 2 : {				
 				System.out.println("ab^x \n");
-
-				System.out.print("Enter a (Double value): ");
-				double a = keyboard.nextDouble();
+				do {
+					System.out.print("Enter a (Double value): ");
+					double a = keyboard.nextDouble();
 				
-				System.out.print("\nEnter b (Double value): ");
-				double b = keyboard.nextDouble();
+					System.out.print("\nEnter b (Double value): ");
+					double b = keyboard.nextDouble();
 				
-				System.out.print("\nEnter x (Double value): ");
-				double x = keyboard.nextDouble();
+					System.out.print("\nEnter x (Double value): ");
+					double x = keyboard.nextDouble();
+					if (b < 0 && x % 1 != 0) {
+						System.out.println("Illegal argument! If b < 0, x must be an integer.");
+					}
+				while (b < 0 && x % 1 != 0);
 				
-				//call abx function
+				abx.calculatePower(a, b, x);
+				
+				System.out.println();
 				System.out.println("");
 				System.out.println("");
 				break;
