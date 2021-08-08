@@ -73,17 +73,8 @@ public class abx{
 		return (a * ans * remainAns);
 	}
 
-	public static void main(String[] args) {
-		Scanner key = new Scanner(System.in);
-		System.out.print("For the expression: ab^x\nPlease enter a real number for 'a': ");
-		double a = key.nextDouble();
-		System.out.print("Please enter a real number for 'b': ");
-		double b = key.nextDouble();
-		System.out.print("Please enter a real number for 'x': ");
-		double x = key.nextDouble();
-		key.close();
+	public static void calculatePower(double a, double b, double x) {
 		double answer;
-
 		if (b < 0 && x % 1 != 0) {
 			System.out.println("Input are invalid, program terminated!");
 			System.exit(0);
