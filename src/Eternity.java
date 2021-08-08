@@ -128,8 +128,10 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);				
-				Standard_Deviation.StandardDeviation(input);
-								
+				double res = Standard_Deviation.StandardDeviation(input);
+				
+				System.out.println("Standard Deviation is: "+res);
+				
 				break;
 			}
 			
