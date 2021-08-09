@@ -83,7 +83,7 @@ public class gammaFunction {
 		double result=0;
 		for(int i=0; i<1000000 ;i++) {
 			a+=division;
-			result+=division*Math.pow(a,value-1)*Math.pow(e,a*-1);
+			result+=division*arcCos.exponentiation(a,value-1)*arcCos.exponentiation(e,a*-1);
 		}
 		return result;
 	}
