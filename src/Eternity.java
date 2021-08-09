@@ -190,8 +190,10 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);				
-				Standard_Deviation.StandardDeviation(input);
+				double res = tandard_Deviation.StandardDeviation(input);
 
+				System.out.println("Standard Deviation: "+res);
+				
 				System.out.println("");
 				System.out.println("");
 				break;
