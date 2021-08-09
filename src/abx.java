@@ -11,20 +11,52 @@ public class abx{
 			return (x * factorial(x - 1));
 	}
 
-	public static double ln(double x) {
-		double fraction = ((x - 1) / (x + 1));
-		double ans = 0;
-		double power = 1;
-		for (int i = 1; i < 50; i++) {
-			if (i % 2 != 0) {
-				for (int j = 0; j < i; j++) {
-					power = power * fraction;
-				}
-				ans = ans + (power / i);
-			}
+	public static double natLog(int n, double x)
+	{
+		
+		double prec;										
+		double div = (x - 1) / (x + 1);
+		int serie = (2*n) + 1;
+		double divSerie = 1.0/serie;
+		double exp = exponent(serie, div);
+
+		
+		prec = (2*(divSerie * exp));						
+		
+		if(prec > 0.000000001)
+		{
+			return prec + natLog(++n, x);					
 		}
-		return (2 * ans);
-	} 
+		else
+		{
+			return 0;
+		}
+				
+	}
+
+	public static double exponent(int exp, double base)
+	{
+		double b = base;
+		double ans = b;
+		
+		for(int i = 1; i < exp; i++)
+		{
+			ans *= b;
+		}
+		
+		return ans;
+	}
+
+	public static double logarithm(double base, double X) 
+	{
+
+		double b = natLog(0, base);
+		double x = natLog(0, X);
+		
+		double ans = x/b;
+		
+		return ans;
+	}  
 
 	public static double expPower(double x) {
 		double ans = x + 1;
@@ -54,7 +86,7 @@ public class abx{
 			if (remainX == 0)
 				remainAns = 1;
 			else
-				remainAns = expPower(remainX * Main.logarithm(e, b));
+				remainAns = expPower(remainX * logarithm(e, b));
 			for (int i = 0; i < intX; i++) {
 				ans = ans * b;
 			}
@@ -65,7 +97,7 @@ public class abx{
 			if (remainX == 0)
 				remainAns = 1;
 			else
-				remainAns = expPower(remainX * Main.logarithm(e, b));
+				remainAns = expPower(remainX * logarithm(e, b));
 			for (int i = 0; i < -intX; i++) {
 				ans = ans * b;
 			}
