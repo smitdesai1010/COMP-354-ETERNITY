@@ -53,7 +53,7 @@ public class Logarithm
 	 * In order to find the logarithm for any base and any X, you can simply divide the natural log of X by the natural log of the base.
 	 * Returns an answer of type double. The parameters are the base and the X in logb (x).
 	 */
-	public static void logarithm(double base, double X) 
+	public static double logarithm(double base, double X) 
 	{
 
 		double b = natLog(0, base);
@@ -61,6 +61,8 @@ public class Logarithm
 		
 		double ans = x/b;
 		
-		System.out.println("Logb (x) = " + ans);
+
+
+		return ans;
 	}
 }

@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Eternity {
 	
 	static Scanner keyboard = new Scanner(System.in);
-	
+
+
+
 	public static void main(String[] args) {
 
 		try
@@ -64,46 +66,68 @@ public class Eternity {
 	}
 	
 	
+	 public static String saveVar(){
+         System.out.println("Do you want to save variable for later use? y/n");
+         String save = keyboard.next();
+         return save;
+     }
+
+
+
+
 	public static void performFunction(int index) throws CustomException
 	{
 		
 		switch(index) 
 		{
 			case 1 : {
+
+
 				System.out.println("arcos(x) \n");
 				System.out.print("Enter x (Double value): ");
 				double x = keyboard.nextDouble();
-				
-				//call arcos function(x)
+				double temp = arcCos.acos(x);
+				System.out.println("Answer is " + temp);
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				System.out.println("");
 				System.out.println("");
-				break;
+				break;		
 			}
 			
 			
 			case 2 : {				
 				System.out.println("ab^x \n");
+				double a,b,x;
 				do {
 					System.out.print("Enter a (Double value): ");
-					double a = keyboard.nextDouble();
+					a = keyboard.nextDouble();
 				
 					System.out.print("\nEnter b (Double value): ");
-					double b = keyboard.nextDouble();
+					b = keyboard.nextDouble();
 				
 					System.out.print("\nEnter x (Double value): ");
-					double x = keyboard.nextDouble();
-					if (b < 0 && x % 1 != 0) {
+					x = keyboard.nextDouble();
+					if (b < 0 && x % 1 != 0) 
 						System.out.println("Illegal argument! If b < 0, x must be an integer.");
 					}
 				while (b < 0 && x % 1 != 0);
 				
-				abx.calculatePower(a, b, x);
-				
-				System.out.println();
+				double temp = abx.calculatePower(a, b, x);
+				System.out.println("The resut is: " + temp);
 				System.out.println("");
 				System.out.println("");
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				break;
 			}
+			
 			
 			
 			case 3 : {
@@ -136,13 +160,16 @@ public class Eternity {
 				
 				
 				//call logx function
-				Logarithm.logarithm(base, x);
+				double temp = Logarithm.logarithm(base, x);
 				
-				System.out.println();
-
+				System.out.println("The resut is: " + temp);
 				System.out.println("");
-				
 				System.out.println("");
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				break;	
 			}
 			
@@ -157,11 +184,17 @@ public class Eternity {
 				if(value.plus==0&&value.clas==1) 
 					//if the user input negative integers, the system will generate following words instead of doing the calculation
 					throw new CustomException("negetive integers are undefined in gamma function!");
-				gammaFunction.gammaAlpha(value);
+				double temp = gammaFunction.gammaAlpha(value);
 				
 				//call gamma function
+				System.out.println("The resut is: " + temp);
 				System.out.println("");
 				System.out.println("");
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				break;
 			}
 			
@@ -174,10 +207,15 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);
-				MeanAbsoluteDeviation.MAD(input);
-
+				double temp = MeanAbsoluteDeviation.MAD(input);
+				System.out.println("The resut is: " + temp);
 				System.out.println("");
 				System.out.println("");
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				break;
 			}
 			
@@ -190,12 +228,15 @@ public class Eternity {
 				String str = keyboard.nextLine();
 				
 				double[] input = parseCSV(str);				
-				double res = tandard_Deviation.StandardDeviation(input);
-
-				System.out.println("Standard Deviation: "+res);
-				
+				double temp = Standard_Deviation.StandardDeviation(input);
+				System.out.println("The resut is: " + temp);
 				System.out.println("");
 				System.out.println("");
+				String save = saveVar();
+				if (save.equalsIgnoreCase("y")){
+				 	performSaveFunction(index, temp);
+					break;	
+				}
 				break;
 			}
 			
@@ -232,7 +273,44 @@ public class Eternity {
 
 	}
 	
-	
+	public static void performSaveFunction(int index, double saved) throws CustomException
+	{
+		System.out.println("----------MENU----------");
+		System.out.println("1) arcos(x) ");
+		System.out.println("2) Exit ");
+		System.out.println("\n\n\n");
+
+		int choice = keyboard.nextInt();
+		
+		switch(choice) 
+		{
+			case 1 : {
+				System.out.println("arcos("+ saved + ") \n");
+				
+				
+				System.out.println("Answer is " + arcCos.acos(saved));
+				System.out.println("");
+				break;
+			}
+			
+			
+			
+			
+			
+			case 2 : {				
+				System.out.println("Exiting program.");
+
+				System.exit(0);
+			}
+		
+						
+			default : {
+				System.out.println("Invalid choice");
+				break;
+			}
+		}
+
+	}
 	
 	
 	public static double[] parseCSV(String csv)
