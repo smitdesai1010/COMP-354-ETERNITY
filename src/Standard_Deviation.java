@@ -59,7 +59,7 @@ public class Standard_Deviation {
 	    
 	    double absValue = currSquare-value < 0 ? value-currSquare : currSquare-value;
 	    
-	    if( currSquare == value || absValue < 0.0000001 )   
+	    if( currSquare == value || absValue < 0.0001 )   
 	    	return midValue;   
 	    
 	    else if(currSquare > value)  
