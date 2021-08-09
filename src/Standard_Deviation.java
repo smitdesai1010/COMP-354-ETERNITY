@@ -3,7 +3,7 @@ package src;
 public class Standard_Deviation {
 
     // Standard Deviation
-    public static void StandardDeviation(double[] dataSet) 
+    public static double StandardDeviation(double[] dataSet) 
     {
         try
         {      
@@ -18,8 +18,7 @@ public class Standard_Deviation {
 	
 	        double variance = sumOfdistancesFromMean/dataSet.length;
 	        
-	        System.out.println("Standard Deviation is: "+sqrt(variance));
-		        
+	        return sqrt(variance);		        
     	}
         
         catch (IllegalArgumentException e)
@@ -31,7 +30,9 @@ public class Standard_Deviation {
         catch (Exception e)
         {
         	System.out.println("Exception in Standard deviation: "+e);
-        }        
+        }    
+        
+        return 0.0;
     }
 
     
