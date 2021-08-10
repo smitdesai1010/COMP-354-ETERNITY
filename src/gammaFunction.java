@@ -1,10 +1,10 @@
 package src;
-import java.util.Scanner;
+//import java.util.Scanner;
 //gamma function is the function to solve factorial(!) for all real numbers including irrational numbers
 public class gammaFunction {
 	//these three values, pi, pi/2 and e are important for calculating certain values
 	static double pi=3.14159265359;
-	static double gammaOneHalf=Math.pow(pi, 0.5);
+	static double gammaOneHalf = arcCos.exponentiation(pi, .5);
 	static double e=2.7182818284;
 	/**for all integers and integers+0.5, there are theories to solve them with no need dealing with the integral
 	 *input is the value of the variable
@@ -116,23 +116,23 @@ public class gammaFunction {
 	
 	
 	
-	public static void main(String[] args) {
-		Scanner input=new Scanner(System.in);
-		try {//welcome and guide message
-			System.out.println("Welcome to use the gammaFunction(v0.8)!");
-			System.out.print("please input value z: ");
-			// where user do the input
-			double number= input.nextDouble();
-			gammaFunction value=new gammaFunction(number);
-			distribution(value);
-			if(value.plus==0&&value.clas==1) 
-				//if the user input negative integers, the system will generate following words instead of doing the calculation
-				System.out.println("negetive integers are undefined in gamma function!");
-			else
-				System.out.println("gamma("+value.input+")="+gammaAlpha(value));}
-		catch(Exception e){
-			 System.out.println("Input are invalid, program terminated!");
-	           System.exit(0);
-		}
-	}
+	// public static void main(String[] args) {
+	// 	Scanner input=new Scanner(System.in);
+	// 	try {//welcome and guide message
+	// 		System.out.println("Welcome to use the gammaFunction(v0.8)!");
+	// 		System.out.print("please input value z: ");
+	// 		// where user do the input
+	// 		double number= input.nextDouble();
+	// 		gammaFunction value=new gammaFunction(number);
+	// 		distribution(value);
+	// 		if(value.plus==0&&value.clas==1) 
+	// 			//if the user input negative integers, the system will generate following words instead of doing the calculation
+	// 			System.out.println("negetive integers are undefined in gamma function!");
+	// 		else
+	// 			System.out.println("gamma("+value.input+")="+gammaAlpha(value));}
+	// 	catch(Exception e){
+	// 		 System.out.println("Input are invalid, program terminated!");
+	//            System.exit(0);
+	// 	}
+	// }
 }

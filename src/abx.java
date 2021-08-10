@@ -1,5 +1,4 @@
 package src;
-import java.util.Scanner;
 
 public class abx{
 	public static double e = 2.7182818284590452353602874713527;
@@ -86,7 +85,8 @@ public class abx{
 			if (remainX == 0)
 				remainAns = 1;
 			else
-				remainAns = expPower(remainX * logarithm(e, b));
+				remainAns = expPower(remainX * Logarithm.logarithm(e, b));
+      
 			for (int i = 0; i < intX; i++) {
 				ans = ans * b;
 			}
@@ -97,7 +97,8 @@ public class abx{
 			if (remainX == 0)
 				remainAns = 1;
 			else
-				remainAns = expPower(remainX * logarithm(e, b));
+				remainAns = expPower(remainX * Logarithm.logarithm(e, b));
+
 			for (int i = 0; i < -intX; i++) {
 				ans = ans * b;
 			}
@@ -106,10 +107,10 @@ public class abx{
 		return (a * ans * remainAns);
 	}
 
-	public static void calculatePower(double a, double b, double x) {
+	public static double calculatePower(double a, double b, double x) {
 		double answer;
 		answer = power(a, b, x);
-		System.out.println("The resut is: " + answer);
+		return answer;
 	}
 
 }

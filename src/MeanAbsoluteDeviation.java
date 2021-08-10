@@ -22,9 +22,7 @@ public class MeanAbsoluteDeviation {
         }
 
         // return average of all the distances
-        double result = mean(distancesFromMean);
-        System.out.println(result);
-        return result;
+        return mean(distancesFromMean);
     }
 
     //Calculate mean of double list, can make public for reuse later
