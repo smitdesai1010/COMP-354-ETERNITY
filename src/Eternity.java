@@ -117,7 +117,7 @@ public class Eternity {
 				while (b < 0 && x % 1 != 0);
 				
 				double temp = abx.calculatePower(a, b, x);
-				System.out.println("The resut is: " + temp);
+				System.out.println("The result is: " + temp);
 				System.out.println("");
 				System.out.println("");
 				String save = saveVar();
@@ -162,7 +162,7 @@ public class Eternity {
 				//call logx function
 				double temp = Logarithm.logarithm(base, x);
 				
-				System.out.println("The resut is: " + temp);
+				System.out.println("The result is: " + temp);
 				System.out.println("");
 				System.out.println("");
 				String save = saveVar();
@@ -187,7 +187,7 @@ public class Eternity {
 				double temp = gammaFunction.gammaAlpha(value);
 				
 				//call gamma function
-				System.out.println("The resut is: " + temp);
+				System.out.println("The result is: " + temp);
 				System.out.println("");
 				System.out.println("");
 				String save = saveVar();
@@ -208,7 +208,7 @@ public class Eternity {
 				
 				double[] input = parseCSV(str);
 				double temp = MeanAbsoluteDeviation.MAD(input);
-				System.out.println("The resut is: " + temp);
+				System.out.println("The result is: " + temp);
 				System.out.println("");
 				System.out.println("");
 				String save = saveVar();
@@ -229,7 +229,7 @@ public class Eternity {
 				
 				double[] input = parseCSV(str);				
 				double temp = Standard_Deviation.StandardDeviation(input);
-				System.out.println("The resut is: " + temp);
+				System.out.println("The result is: " + temp);
 				System.out.println("");
 				System.out.println("");
 				String save = saveVar();
