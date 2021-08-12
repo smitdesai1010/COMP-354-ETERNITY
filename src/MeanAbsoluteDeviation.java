@@ -1,5 +1,5 @@
-package src;
-//We can change the naming conventions later
+//package src;
+
 public class MeanAbsoluteDeviation {
 
     // Mean Abosulute Deviation

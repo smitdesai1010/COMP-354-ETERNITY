@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 public class abx{
 	public static double e = 2.7182818284590452353602874713527;

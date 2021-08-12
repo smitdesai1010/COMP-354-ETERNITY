@@ -1,5 +1,5 @@
-package src;
-//import java.util.Scanner;
+//package src;
+
 //gamma function is the function to solve factorial(!) for all real numbers including irrational numbers
 public class gammaFunction {
 	//these three values, pi, pi/2 and e are important for calculating certain values
